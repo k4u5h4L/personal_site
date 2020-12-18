@@ -1,5 +1,6 @@
 {% extends "blog/base/base.html" %}
 {% load static %}
+{% load crispy_forms_tags %}
 
 {% block content %}
 <!--  PRELOADER  -->
@@ -88,77 +89,7 @@
         <div class="container">
             <div class="row pt-sm-5">
                 <div class="col-12 col-lg-4 order-2 order-md-1">
-                    <div class="search_outerbox">
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Search for...">
-                            <span class="input-group-btn">
-                                <button class="btn btn-search" type="button"><i class="fa fa-search fa-fw"></i></button>
-                        </span>
-                        </div>
-                    </div>
-
-                    <section id="topics">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-12 pr-0 pl-0">
-                                    <div class="topic_outerbox mt-4">
-                                        <h2>Topics</h2>
-                                        <div class="inner-box">
-                                            <ul class="sub-heading">
-                                                <li><a href="#">Doctors</a> <span class="dots">...............</span> 4</li>
-                                                <li><a href="#">Patients</a> <span class="dots pr-1">...............</span>5</li>
-                                                <li><a href="#">Corona</a><span class="dots pr-1">................</span>1</li>
-                                                <li><a href="#">Spread</a><span class="dots">................</span>  8</li>
-                                                <li><a href="#">Travel</a><span class="dots">.................</span>6</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-
-                    <section id="popular_post">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-12 p-0">
-                                    <div class="outer_popular mt-4">
-                                        <h2 class="text-black">Popular Post</h2>
-                                        <div class="outer mt-4 display">
-                                            <div class="popular_image">
-                                                <a href="blogs.html"><img src="img/post1.jpg" alt="popular image"></a>
-                                            </div>
-                                            <div class="text_post">
-                                                <p class="main"> Minimal Post...</p>
-                                                <p class="date">March 03, 2020 by</p><span>Mark Edison</span>
-                                            </div>
-                                        </div>
-
-                                        <div class="outer pt-lg-3 display">
-                                            <div class="popular_image">
-                                                <a href="blogs.html"><img src="img/post2.jpg" alt="audio image"></a>
-                                            </div>
-                                            <div class="text_post">
-                                                <p class="main"> Standard Post....</p>
-                                                <p class="date">March 12, 2020 by</p><span>Mark Edison</span>
-                                            </div>
-                                        </div>
-
-                                        <div class="outer pt-lg-3 display">
-                                            <div class="popular_image">
-                                                <a href="blogs.html"><img src="img/post3.jpg" alt="standard image"></a>
-                                            </div>
-                                            <div class="text_post">
-                                                <p class="main">Standard Post...</p>
-                                                <p class="date">March 18, 2020 by</p><span>Mark Edison</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-
+                    <form method="GET">
                     <section id="tags">
                         <div class="container">
                             <div class="row">
@@ -167,44 +98,36 @@
                                         <h2 class="main_tag">Tags</h2>
                                         <div class="inner_tag">
                                             <div class="tag_text">
-                                                <span><a href="">DOCTORS</a></span>
-                                                <span><a href="">PATIENTS</a></span>
-                                                <span><a href="">SPREAD</a></span>
-                                                <span><a href="">TRAVEL</a></span>
-                                                <span><a href="">CORONA</a></span>
-                                                <span><a href="">PRECAUTIONS</a></span>
-                                                <span><a href="">VACCINE</a></span>
-                                                <span><a href="">BLOG</a></span>
-
+                                                <!-- <span><a href="">DOCTORS</a></span>
+                                                    <span><a href="">PATIENTS</a></span>
+                                                    <span><a href="">SPREAD</a></span>
+                                                    <span><a href="">TRAVEL</a></span>
+                                                    <span><a href="">CORONA</a></span>
+                                                    <span><a href="">PRECAUTIONS</a></span>
+                                                    <span><a href="">VACCINE</a></span>
+                                                    <span><a href="">BLOG</a></span> -->
+                                                    {{ postFilter.form.tags }}
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </section>
-
-                    <section id="archieve">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-12 pr-0 pl-0">
-                                    <div class="topic_outerbox mt-4">
-                                        <h2>Archives</h2>
-                                        <div class="inner-box1">
-                                            <ul class="sub-heading">
-                                                <li><a href="#">May 2016</a> <span class="dots">..............</span>1</li>
-                                                <li><a href="#">July 2015</a> <span class="dots">..............</span>3</li>
-                                                <li><a href="#">Dec 2017</a> <span class="dots">..............</span>1</li>
-                                                <li><a href="#">Oct 2019</a> <span class="dots">..............</span>6</li>
-                                                <li><a href="#">Sep 2018</a> <span class="dots">..............</span>8</li>
-                                                <li><a href="#">Feb 2020</a> <span class="dots">..............</span>1</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
+                        </section>
+                        
+                        <div class="search_outerbox">
+                        
+                            <div class="input-group">
+                                <input type="text" name="post_title" id="id_post_title" class="form-control" placeholder="Search for...">
+                            </div>
+                            
+                            <div class="input-group">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-search" type="submit"><i class="fa fa-search fa-fw"></i> <span>Filter</span></button>
+                                </span>
                             </div>
                         </div>
-                    </section>
+                </form>
 
                     <div class="sale_image">
                         <div class="container">
@@ -218,27 +141,31 @@
                 </div>
 
                 <div class="col-sm-12 col-md-12 col-lg-8 pt-sm-4 pt-md-0 pt-lg-0 order-1 order-md-2">
-
+                    <div class="infinite-container">
+                    {% for post in posts %}
                     <!--..................MINIMAL POST....-->
-                    <div class="minimal_image mt-sm-10 mt-md-0 mt-lg-0">
-                        <section class="min-post">
-                            <img src="img/top-stories/minimal-post.jpg" alt="Blog Image">
-                        </section>
-                    </div>
-                    <div class="text_minimal">
-                        <a class="text-black" href="blogs.html"><h2>Minimal Post With A Preview Image</h2></a>
-                        <div class="display">
-                            <p class="date text-black">Feburary 23, 2020  </p><div class="verticle_line margin_1 bg-black"></div>
-                            <span>Mark Edison</span>
+                    <div class="infinite-item">
+                        <div class="minimal_image mt-sm-10 mt-md-0 mt-lg-0">
+                            <section class="min-post">
+                                <img src="{{ post.image.url }}" alt="Blog Image">
+                            </section>
                         </div>
-                        <p class="sub-heading text-grey">Nam ut rutrum ex, venenatis sollicitudin urna. Aliquam erat volutpat. Integer eu ipsum sem.
-                            Ut bibendum lacus vestibulum maximus suscipit. Quisque vitae nibh iaculis...</p>
-                        <a href="blogs.html" class="btn btn-large btn-primary">Read More</a>
+                        <div class="text_minimal">
+                            <a class="text-black" href="{% url 'blog_page' post.id %}"><h2>{{ post.post_title }}</h2></a>
+                            <div class="display">
+                                <p class="date text-black">{{ post.post_timestamp|date:"D d M Y" }}  </p><div class="verticle_line margin_1 bg-black"></div>
+                                <span>{{ post.author }}</span>
+                            </div>
+                            <p class="sub-heading text-grey">{{ post.post_text }}...</p>
+                            <a href="{% url 'blog_page' post.id %}" class="btn btn-large btn-primary">Read More</a>
+                        </div>
+                        <div class="divider1"></div>
                     </div>
-                    <div class="divider1"></div>
+                    {% endfor %}
+                    </div>
 
                     <!--...........AUDIO............-->
-                    <div class="audio-post mt-10">
+                    <!-- <div class="audio-post mt-10">
                         <div class="img-area">
                             <img src="img/top-stories/audio-post.jpg" alt="audio image">
                             <audio id="player2" preload="none" controls style="max-width: 100%;">
@@ -258,10 +185,10 @@
 
                         </div>
                         <div class="divider1"></div>
-                    </div>
+                    </div> -->
 
                     <!--.........PORTFOLIO-->
-                    <div class="audio-post mt-10">
+                    <!-- <div class="audio-post mt-10">
                         <div class="img-area">
                             <div class="row">
                                 <div class="col-4 pt-0 pb-0 pr-0">
@@ -367,10 +294,10 @@
                             <a href="blogs.html" class="btn btn-large btn-primary">Read More</a>
                         </div>
                         <div class="divider1"></div>
-                    </div>
+                    </div> -->
 
                     <!--.........CAROUSAL ...........-->
-                    <div class="audio-post mt-10">
+                    <!-- <div class="audio-post mt-10">
                         <div class="img-area">
                             <div id="carouselExampleControls" class="carousel slide carousal-fade" data-ride="carousel">
                                 <div class="carousel-inner ml-lg-10 ">
@@ -405,44 +332,47 @@
                             <a href="blogs.html" class="btn btn-large btn-primary">Read More</a>
                         </div>
                         <div class="divider1"></div>
-                    </div>
+                    </div> -->
 
                     <!--..........PAGINATION..........-->
                     <ul class="pagination mt-10">
-                        <li class="page-item active">
+                        <!-- <li class="page-item active">
                             <a class="page-link" href="#">1<span class="sr-only">(current)</span></a>
                         </li>
                         <li class="page-item"><a class="page-link" href="#">2</a></li>
                         <li class="page-item"><a class="page-link" href="#">3</a></li>
                         <li class="page-item">
                             <a class="page-link" href="#"><i class="fas fa-arrow-right"></i></a>
-                        </li>
+                        </li> -->
+                        {% if page_obj.has_next %}
+                            <a class="infinite-more-link" href="{% url 'blog_search_page' %}?page={{ page_obj.next_page_number }}">Loading</a>
+                        {% endif %}
                     </ul>
-
             </div>
         </div>
         </div>
 </section>
-
-<!--  START FOOTER SECTION  -->
-<section id="footer" class="footer">
-    <div class="container">
-        <div class="row">
-            <div class="col-12 text-center">
-                <ul class="footer_ul">
-                    <li class="footer_list"><i class="lab la-facebook-f"></i></li>
-                    <li class="footer_list"><i class="lab la-twitter"></i></li>
-                    <li class="footer_list"><i class="lab la-google-plus"></i></li>
-                    <li class="footer_list"><i class="lab la-linkedin-in"></i></li>
-                    <li class="footer_list"><i class="lab la-instagram"></i></li>
-                    <li class="footer_list"><i class="las la-envelope"></i></li>
-                </ul>
-                <p class="info footer_text"><i class="far fa-copyright"></i>2020 MegaOne. Made with love by themesindustry</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-</div>
 
 {% endblock content %}
+
+{% block extra_js %}
+
+    <script src="{% static 'blog/infinite-scroll/jquery.waypoints.min.js' %}"></script>
+	<script src="{% static 'blog/infinite-scroll/infinite.min.js' %}"></script>
+
+	<script>
+        var infinite = new Waypoint.Infinite({
+            element: $('.infinite-container'),
+
+            offset: 'bottom-in-view',
+
+            onBeforePageLoad: function () {
+                $('.loading').show();
+            },
+            onAfterPageLoad: function () {
+                $('.loading').hide();
+            }
+        });
+    </script>
+
+{% endblock extra_js %}

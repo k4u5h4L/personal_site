@@ -175,10 +175,12 @@
                         <!-- ######################################################### -->
                         {% endfor %}
 
+                        {% if user.is_authenticated %}
                         <h1 class="comment_text text-black mt-6 mb-5">Write a comment</h1>
-                        <form>
+                        <form method="POST" action="/blog/{{ post.id }}/" name="commentForm" id="commentForm">
+                            {% csrf_token %}
                             <div class="row">
-                                <div class="col-lg-6">
+                                <!-- <div class="col-lg-6">
                                     <div class="form-group">
                                         <input class="form-control" type="text" placeholder="Name" required id="Name" name="Name">
                                     </div>
@@ -188,18 +190,23 @@
                                     <div class="form-group">
                                         <input class="form-control" type="email" placeholder="Email" required id="email" name="email">
                                     </div>
-                                </div>
+                                </div> -->
+
+                                <!-- {{ form }} -->
 
                                 <div class="col-12">
                                     <div class="form-group">
                                         <span class="message-error error"></span>
-                                        <textarea class="form-control" rows="5" required id="comment" placeholder="Comment"></textarea>
+                                        <textarea class="form-control" rows="5" name="comment_text" maxlength="500" required id="id_comment_text" placeholder="Comment here"></textarea>
                                     </div>
-                                    <button type="submit" class="btn btn-large btn-primary padding_button w-100" id="submit_btn">SUBMIT REQUEST</button>
+                                    <button type="submit" class="btn btn-large btn-primary padding_button w-100" id="submit_btn">SUBMIT</button>
                                 </div>
 
                             </div>
                         </form>
+                        {% else %}
+                        <h1 class="comment_text text-black mt-6 mb-5">You need to be logged in to post comments</h1>
+                        {% endif %}
                     </div>
                 </div>
 
@@ -228,7 +235,7 @@
                                             </div>
                                             <div class="text_post">
                                                 <p class="main"> {{ p.post_title }}....</p>
-                                                <p class="date">{{ p.post_timestamp }} by</p><span>{{ p.author }}</span>
+                                                <p class="date">{{ p.post_timestamp|date:"D d M Y" }} </p><span>by {{ p.author }}</span>
                                             </div>
                                         </div>
                                         {% endfor %}
