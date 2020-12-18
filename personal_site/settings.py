@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
+import os
+import json
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -140,7 +142,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 
-with open(f'{os.getcwd()}/cseverything/config.json') as fp:
+with open(f'{os.getcwd()}/personal_site/config.json') as fp:
   email_cred = json.load(fp)
 
 EMAIL_HOST_USER = email_cred['EMAIL_USR']

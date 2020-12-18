@@ -1,0 +1,82 @@
+{% extends "users/base/base.html" %}
+{% load static %}
+
+{% block content %}
+
+<!-- Preloader -->
+<div class="preloader">
+    <div class="center">
+        <div class="spinner">
+            <div class="blob top"></div>
+            <div class="blob bottom"></div>
+            <div class="blob left"></div>
+            <div class="blob move-blob"></div>
+        </div>
+    </div>
+</div>
+<!-- Preloader End -->
+
+
+
+<!--login start-->
+<section class="p-lg-0 login-sec">
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-12 col-lg-6 order-2 position-relative d-flex align-items-center bg-1">
+
+
+                <div class="login-content text-center text-lg-left">
+
+                    <!--logo-->
+                    <div class="float-middle-logo">
+                        <a class="navbar-brand link" href="../index-food-delivery.html">
+                            <img src="https://c402277.ssl.cf1.rackcdn.com/photos/18435/images/hero_full/Medium_WW267491.jpg?1578425217" class="" alt="logo">
+                        </a>
+                    </div>
+                    <!--title-->
+                    <div class="title d-inline-block mb-4">
+                        <h6 class="mb-3 sub-heading">Welcome to <a href="https://kaush.me">kaush.me</a></h6>
+                        <h3 class="mb-3 heading">Login to your account</h3>
+                        <p class="text">Sign in to start commenting!</p>
+                    </div>
+
+                    <!--form-->
+                    <form method="POST" name="loginForm" id="loginForm">
+                        {% csrf_token %}
+
+                        <input class="form-control" type="text" name="username" maxlength="150" placeholder="Your Username *" autocapitalize="none" autocomplete="username" autofocus required id="id_username">
+
+                        <input class="form-control" type="password" name="password1" placeholder="Your Password *" autocomplete="new-password" required id="id_password1">
+
+                        <div class="form-button">
+                            <button id="submit" type="submit" class="btn btn-large rounded-pill main-btn">Login</button> <a href="{% url 'register_page' %}" class="text">Not Registered Yet?</a>
+                        </div>
+                    </form>
+                </div>
+
+                <!--bottom nav start-->
+                <div class="bottom-mini-nav">
+                    <div class="row no-gutters">
+                        <div class="col-12 col-lg-12 simple-navbar d-flex align-items-center justify-content-start">
+                            <nav class="navbar">
+                                <a class="nav-link link" href="restaurant-listing.html">Browse Food</a>
+                                <a class="nav-link link" href="../index-food-delivery.html#app-sec">Download App</a>
+                                <a class="nav-link link" href="../index-food-delivery.html#about-sec">About Us</a>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+                <!--bottom nav end-->
+            </div>
+            <div class="col-12 col-lg-6 order-1 p-0 login-side-background" style="background-image: url('img/login-half-block.jpg');">
+                <!--Feature Image Half-->
+            </div>
+        </div>
+
+
+    </div>
+</section>
+<!--login end-->
+
+{% endblock content %}
