@@ -98,10 +98,10 @@
             <div class="overlay"></div>
             <div class="row no-gutters height1">
                 <div class="col-2 d-flex justify-content-center align-items-center">
-                    <p class="verticle-text text-white padding-vert">Lorem ipsum dolor sit amet, adipi elit et dolore of</p>
+                    <p class="verticle-text text-white padding-vert">That weird blog page...</p>
                 </div>
                 <div class="col-10 d-flex  align-items-center">
-                    <h1 class="main-heading text-white">CORONA<br>NEWS<br>AND<br>UPDATES</h1>
+                    <h1 class="main-heading text-white">BLOGS,<br>BLOGS<br>AND<br>BLOGS</h1>
                 </div>
             </div>
         </div>
@@ -113,14 +113,14 @@
         <div class="row">
             <div class="col-12 col-md-6">
                 <div class="about-text text-left d-flex">
-                    <p class="verticle-text text-grey pt-2">basic info about us</p>
-                    <h1 class="main-heading ml-3">Lorem ipsum dolor sit amet</h1>
+                    <p class="verticle-text text-grey pt-2">Hey fsd</p>
+                    <h1 class="main-heading ml-3">Hey there!</h1>
                 </div>
             </div>
             <div class="col-12 col-md-6">
-                <p class="sub-heading text-grey">Curabitur mollis bibendum luctus. Duis suscipit vitae dui sed suscipit. Vestibulum auctor nunc vitae diam eleifend, in maximus metus sollicitudin. Quisque vitae sodales lectus.
+                <p class="sub-heading text-grey">Looks like you have stubled upon my blog site!
                     <br><br>
-                    Curabitur mollis bibendum luctus. Duis suscipit vitae dui sed suscipit. Vestibulum auctor nunc vitae diam eleifend, in maximus metus sollicitudin. Vitae diam eleifend, in maximus metus </p>
+                    Proceed reading down below to see all my rantings and guides. </p>
             </div>
         </div>
     </div>
@@ -129,309 +129,41 @@
 <section id="portfolio" class="portfolio">
     <div class="container">
 
-        <div id="js-grid-masonry-projects" class="cbp cbp-l-grid-masonry-projects">
-            <div class="cbp-item">
+        <div id="js-grid-masonry-projects" class="cbp cbp-l-grid-masonry-projects infinite-container">
+            {% for post in posts %}
+            <!-- ###################################################################################### -->
+            <div class="cbp-item infinite-item">
                 <div class="cbp-caption">
                     <div class="cbp-caption-defaultWrap">
-                        <img src="blog/img/portfolioL1.jpg" alt="">
+                        <img src="{{ post.image.url }}" alt="">
                     </div>
                     <div class="cbp-caption-activeWrap">
                         <div class="cbp-l-caption-alignCenter">
                             <div class="cbp-l-caption-body">
-                                <a href="blog/blogs.html" class="btn blog-btn cbp-singlePage cbp-l-caption-buttonLeft">READ MORE</a>
+                                <a href="{% url 'blog_page' post.id %}" class="btn blog-btn cbp-singlePage cbp-l-caption-buttonLeft">READ MORE</a>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="portfolio-text">
-                    <p class="portfolio-vert text-grey">by ellie</p>
-                    <a class="text-black" href="blog/blogs.html"><h2 class="heading ml-3">stay safe and<br> healthy</h2></a>
-                    <p class="date text-grey">March 25' 2019</p>
+                    <p class="portfolio-vert text-grey">by {{ post.author.username }}</p>
+                    <a class="text-black" href="{% url 'blog_page' post.id %}"><h2 class="heading ml-3">{{ post.post_title }}<br><br></h2></a>
+                    <p class="date text-grey">{{ post.post_timestamp }}</p>
 
                     <div class="horizontal-line"></div>
-                    <p class="sub-heading text-grey mt-3">Curabitur mollis bibendum luctus. Duis suscipit vitae dui sed suscipit. Vestibulum auctor nunc vitae diam eleifend, in maximus metus sollicitudin. Quisque vitae sodales lectus......
-
-
+                    <p class="sub-heading text-grey mt-3">{{ post.post_text }}......
                 </div>
             </div>
-
-            <div class="cbp-item">
-                <div class="cbp-caption">
-                    <div class="cbp-caption-defaultWrap">
-                        <img src="blog/img/portfolioS9.jpg" alt="">
-
-                    </div>
-                    <div class="cbp-caption-activeWrap">
-                        <div class="cbp-l-caption-alignCenter">
-                            <div class="cbp-l-caption-body">
-                                <a class="vimeo" href="http://player.vimeo.com/video/396087935?title=0&amp;byline=0&amp;portrait=0"><i class="las la-play play-btn"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="portfolio-text">
-                    <p class="portfolio-vert text-grey">by ellie</p>
-                    <a class="text-black" href="blog/blogs.html"><h2 class="heading ml-3">precautions from<br> coronavirus</h2></a>
-                    <p class="date text-grey">March 25' 2019</p>
-
-                    <div class="horizontal-line"></div>
-                    <p class="sub-heading text-grey mt-3">Curabitur mollis bibendum luctus. Duis suscipit vitae dui sed suscipit. Vestibulum auctor nunc vitae diam eleifend, in maximus metus sollicitudin. Quisque vitae sodales lectus......
-
-
-                </div>
-            </div>
-
-            <div class="cbp-item">
-                <div class="cbp-caption">
-                    <div class="cbp-caption-defaultWrap">
-                        <img src="blog/img/portfolioL2.jpg" alt="">
-                    </div>
-                    <div class="cbp-caption-activeWrap">
-                        <div class="cbp-l-caption-alignCenter">
-                            <div class="cbp-l-caption-body">
-                                <a href="blog/blogs.html" class="btn blog-btn cbp-l-caption-buttonLeft">READ MORE</a>
-                           </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="portfolio-text">
-                    <p class="portfolio-vert text-grey">by ellie</p>
-                    <a class="text-black" href="blog/blogs.html"><h2 class="heading ml-3">Latest research<br> on coronavirus</h2></a>
-                    <p class="date text-grey">March 25' 2019</p>
-
-                    <div class="horizontal-line"></div>
-                    <p class="sub-heading text-grey mt-3">Curabitur mollis bibendum luctus. Duis suscipit vitae dui sed suscipit. Vestibulum auctor nunc vitae diam eleifend, in maximus metus sollicitudin. Quisque vitae sodales lectus......
-
-
-                </div>
-            </div>
-
-            <div class="cbp-item">
-                <div class="cbp-caption">
-                    <div class="cbp-caption-defaultWrap">
-                        <img src="blog/img/portfolioL4.jpg" alt="">
-                    </div>
-                    <div class="cbp-caption-activeWrap">
-                        <div class="cbp-l-caption-alignCenter">
-                            <div class="cbp-l-caption-body">
-                                <a href="blog/blogs.html" class="btn blog-btn cbp-l-caption-buttonLeft">READ MORE</a>
-                                </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="portfolio-text">
-                    <p class="portfolio-vert text-grey">by ellie</p>
-                    <a class="text-black" href="blog/blogs.html"><h2 class="heading ml-3">Practice food<br> safety</h2></a>
-                    <p class="date text-grey">March 25' 2019</p>
-
-                    <div class="horizontal-line"></div>
-                    <p class="sub-heading text-grey mt-3">Curabitur mollis bibendum luctus. Duis suscipit vitae dui sed suscipit. Vestibulum auctor nunc vitae diam eleifend, in maximus metus sollicitudin. Quisque vitae sodales lectus......
-
-
-                </div>
-            </div>
-
-            <div class="cbp-item">
-                <div class="cbp-caption">
-                    <div class="cbp-caption-defaultWrap">
-                        <img src="blog/img/portfolioS6.jpg" alt="">
-                    </div>
-                    <div class="cbp-caption-activeWrap">
-                        <div class="cbp-l-caption-alignCenter">
-                            <div class="cbp-l-caption-body">
-                                <a href="blog/blogs.html" class="btn blog-btn cbp-l-caption-buttonLeft">READ MORE</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="portfolio-text">
-                    <p class="portfolio-vert text-grey">by ellie</p>
-                    <a class="text-black" href="blog/blogs.html"><h2 class="heading ml-3">precautions<br> before time</h2></a>
-
-                    <p class="date text-grey">March 25' 2019</p>
-
-                    <div class="horizontal-line"></div>
-                    <p class="sub-heading text-grey mt-3">Curabitur mollis bibendum luctus. Duis suscipit vitae dui sed suscipit. Vestibulum auctor nunc vitae diam eleifend, in maximus metus sollicitudin. Quisque vitae sodales lectus......
-
-
-                </div>
-            </div>
-
-            <div class="cbp-item">
-                <div class="cbp-caption">
-                    <div class="cbp-caption-defaultWrap">
-                        <img src="blog/img/portfolioS3.jpg" alt="">
-                    </div>
-                    <div class="cbp-caption-activeWrap">
-                        <div class="cbp-l-caption-alignCenter">
-                            <div class="cbp-l-caption-body">
-                                <a href="blog/blogs.html" class="btn blog-btn cbp-l-caption-buttonLeft">READ MORE</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="portfolio-text">
-                    <p class="portfolio-vert text-grey">by ellie</p>
-                    <a class="text-black" href="blog/blogs.html"><h2 class="heading ml-3">Compulsion of<br> facemask</h2></a>
-                    <p class="date text-grey">March 25' 2019</p>
-
-                    <div class="horizontal-line"></div>
-                    <p class="sub-heading text-grey mt-3">Curabitur mollis bibendum luctus. Duis suscipit vitae dui sed suscipit. Vestibulum auctor nunc vitae diam eleifend, in maximus metus sollicitudin. Quisque vitae sodales lectus......
-
-
-                </div>
-            </div>
-
-            <div class="cbp-item">
-                <div class="cbp-caption">
-                    <div class="cbp-caption-defaultWrap">
-                        <img src="blog/img/portfolioS5.jpg" alt="">
-                    </div>
-                    <div class="cbp-caption-activeWrap">
-                        <div class="cbp-l-caption-alignCenter">
-                            <div class="cbp-l-caption-body">
-                                <a href="blog/blogs.html" class="btn blog-btn cbp-l-caption-buttonLeft">READ MORE</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="portfolio-text">
-                    <p class="portfolio-vert text-grey">by ellie</p>
-                    <a class="text-black" href="blog/blogs.html"><h2 class="heading ml-3">unnecessary<br> travelling</h2></a>
-                    <p class="date text-grey">March 25' 2019</p>
-
-                    <div class="horizontal-line"></div>
-                    <p class="sub-heading text-grey mt-3">Curabitur mollis bibendum luctus. Duis suscipit vitae dui sed suscipit. Vestibulum auctor nunc vitae diam eleifend, in maximus metus sollicitudin. Quisque vitae sodales lectus......
-                </div>
-            </div>
-
-            <div class="cbp-item">
-                <div class="cbp-caption">
-                    <div class="cbp-caption-defaultWrap">
-                        <img src="blog/img/portfolioL3.jpg" alt="">
-                    </div>
-                    <div class="cbp-caption-activeWrap">
-                        <div class="cbp-l-caption-alignCenter">
-                            <div class="cbp-l-caption-body">
-                                <a href="blog/blogs.html" class="btn blog-btn cbp-l-caption-buttonLeft">READ MORE</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="portfolio-text">
-                    <p class="portfolio-vert text-grey">by ellie</p>
-                    <a class="text-black" href="blog/blogs.html"><h2 class="heading ml-3">protect family<br> from corona</h2></a>
-                    <p class="date text-grey">March 25' 2019</p>
-
-                    <div class="horizontal-line"></div>
-                    <p class="sub-heading text-grey mt-3">Curabitur mollis bibendum luctus. Duis suscipit vitae dui sed suscipit. Vestibulum auctor nunc vitae diam eleifend, in maximus metus sollicitudin. Quisque vitae sodales lectus......
-
-
-                </div>
-            </div>
-
-            <div class="cbp-item">
-                            <div class="cbp-caption">
-                                <div class="cbp-caption-defaultWrap">
-                                    <img src="blog/img/portfolioS4.jpg" alt="">
-                                </div>
-                                <div class="cbp-caption-activeWrap">
-                                    <div class="cbp-l-caption-alignCenter">
-                                        <div class="cbp-l-caption-body">
-                                            <a class="vimeo" href="http://player.vimeo.com/video/246656056?title=0&amp;byline=0&amp;portrait=0"><i class="las la-play play-btn"></i></a>
-                                           </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="portfolio-text">
-                                <p class="portfolio-vert text-grey">by ellie</p>
-                                <a class="text-black" href="blog/blogs.html"><h2 class="heading ml-3">Coronavirus<br> origin</h2></a>
-                                <p class="date text-grey">March 25' 2019</p>
-
-                                <div class="horizontal-line"></div>
-                                <p class="sub-heading text-grey mt-3">Curabitur mollis bibendum luctus. Duis suscipit vitae dui sed suscipit. Vestibulum auctor nunc vitae diam eleifend, in maximus metus sollicitudin. Quisque vitae sodales lectus......
-
-
-                            </div>
-                        </div>
-
-            <div class="cbp-item">
-                <div class="cbp-caption">
-                    <div class="cbp-caption-defaultWrap">
-                        <img src="blog/img/portfolioL6.jpg" alt="">
-                    </div>
-                    <div class="cbp-caption-activeWrap">
-                        <div class="cbp-l-caption-alignCenter">
-                            <div class="cbp-l-caption-body">
-                                <a href="blog/blogs.html" class="btn blog-btn cbp-l-caption-buttonLeft">READ MORE</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="portfolio-text">
-                    <p class="portfolio-vert text-grey">by ellie</p>
-                    <a class="text-black" href="blog/blogs.html"><h2 class="heading ml-3">Regular hand<br> wash</h2></a>
-                    <p class="date text-grey">March 25' 2019</p>
-
-                    <div class="horizontal-line"></div>
-                    <p class="sub-heading text-grey mt-3">Curabitur mollis bibendum luctus. Duis suscipit vitae dui sed suscipit. Vestibulum auctor nunc vitae diam eleifend, in maximus metus sollicitudin. Quisque vitae sodales lectus......
-
-
-                </div>
-            </div>
-
-            <div class="cbp-item">
-                <div class="cbp-caption">
-                    <div class="cbp-caption-defaultWrap">
-                        <img src="blog/img/portfolioL5.jpg" alt="">
-                    </div>
-                    <div class="cbp-caption-activeWrap">
-                        <div class="cbp-l-caption-alignCenter">
-                            <div class="cbp-l-caption-body">
-                                <a href="blog/blogs.html" class="btn blog-btn cbp-l-caption-buttonLeft">READ MORE</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="portfolio-text">
-                    <p class="portfolio-vert text-grey">by ellie</p>
-                    <a class="text-black" href="blog/blogs.html"><h2 class="heading ml-3">Coronavirus<br> composition</h2></a>
-                    <p class="date text-grey">March 25' 2019</p>
-
-                    <div class="horizontal-line"></div>
-                    <p class="sub-heading text-grey mt-3">Curabitur mollis bibendum luctus. Duis suscipit vitae dui sed suscipit. Vestibulum auctor nunc vitae diam eleifend, in maximus metus sollicitudin. Quisque vitae sodales lectus......
-
-
-                </div>
-            </div>
-
-            <div class="cbp-item">
-                <div class="cbp-caption">
-                    <div class="cbp-caption-defaultWrap">
-                        <img src="blog/img/portfolioS8.jpg " alt="">
-                    </div>
-                    <div class="cbp-caption-activeWrap">
-                        <div class="cbp-l-caption-alignCenter">
-                            <div class="cbp-l-caption-body">
-                                <a href="blog/blogs.html" class="btn blog-btn cbp-l-caption-buttonLeft">READ MORE</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="portfolio-text">
-                    <p class="portfolio-vert text-grey">by ellie</p>
-                    <a class="text-black" href="blog/blogs.html"><h2 class="heading ml-3">visit doctor<br>immediately</h2></a>
-                    <p class="date text-grey">March 25' 2019</p>
-                    <div class="horizontal-line"></div>
-                    <p class="sub-heading text-grey mt-3">Curabitur mollis bibendum luctus. Duis suscipit vitae dui sed suscipit. Vestibulum auctor nunc vitae diam eleifend, in maximus metus sollicitudin. Quisque vitae sodales lectus......
-                </div>
-            </div>
-
+            <!-- ###################################################################################### -->
+            {% endfor %}
         </div>
+        {% if page_obj.has_next %}
+			<a class="infinite-more-link" href="{% url 'blog_home_page' %}?page={{ page_obj.next_page_number }}">Loading</a>
+		{% endif %}
     </div>
 </section>
 
-<section id="testimonial" class="testimonial">
+<!-- <section id="testimonial" class="testimonial">
     <div class="row bg-black">
         <div class="col-12 col-md-6 p-0">
             <img src="blog/img/testimonial-img.jpg" alt="image">
@@ -471,7 +203,7 @@
             </div>
         </div>
     </div>
-</section>
+</section> -->
 
 <section id="footer" class="footer">
     <div class="container">
@@ -485,7 +217,7 @@
                     <li class="footer_list"><i class="lab la-instagram"></i></li>
                     <li class="footer_list"><i class="las la-envelope"></i></li>
                 </ul>
-                <p class="info footer_text"><i class="far fa-copyright"></i>2020 MegaOne. Made with love by themesindustry</p>
+                <p class="info footer_text"><i class="far fa-copyright"></i>The weird blog site</p>
             </div>
         </div>
     </div>
@@ -504,5 +236,22 @@
 <script src="{% static 'blog/blog/js/wow.min.js' %}"></script>
 <script src="{% static 'blog/vendor/js/parallaxie.min.js' %}"></script>
 <script src="{% static 'blog/blog/js/script.js' %}"></script>
+    <script src="{% static 'blog/infinite-scroll/jquery.waypoints.min.js' %}"></script>
+	<script src="{% static 'blog/infinite-scroll/infinite.min.js' %}"></script>
+
+	<script>
+        var infinite = new Waypoint.Infinite({
+            element: $('.infinite-container'),
+
+            offset: 'bottom-in-view',
+
+            onBeforePageLoad: function () {
+                $('.loading').show();
+            },
+            onAfterPageLoad: function () {
+                $('.loading').hide();
+            }
+        });
+    </script>
 </body>
 </html>

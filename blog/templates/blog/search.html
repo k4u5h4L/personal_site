@@ -1,36 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="author" content="Themes Industry">
-    <!-- description -->
-    <meta name="description" content="Product is a highly creative, modern, visually stunning and Bootstrap responsive multipurpose agency and HTML5 template with 14 ready home page demos.">
-    <!-- keywords -->
-    <meta name="keywords" content="creative, modern, clean, bootstrap responsive, html5, css3, portfolio, blog, agency, templates, multipurpose, one page, corporate, start-up, studio, branding, designer, freelancer, carousel, parallax, photography, personal, masonry, grid, faq">
-    <!-- Page Title -->
-    <title>Blog | MegaOne | Creative HTML5 Template</title>
-    <link rel="stylesheet" href="../vendor/css/jquery.fancybox.min.css">
-    <!-- Favicon -->
-    <link rel="icon" href="../blog/img/favicon.ico">
-    <!-- Bundle -->
-    <link rel="stylesheet" href="../vendor/css/bundle.min.css">
-    <!-- Plugin Css -->
-    <link rel="stylesheet" href="../vendor/css/jquery.fancybox.min.css">
-    <link rel="stylesheet" href="../vendor/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="../vendor/css/cubeportfolio.min.css">
-    <link rel="stylesheet" href="../blog/css/animate.min.css">
-    <link rel="stylesheet" href="../blog/css/line-awesome.min.css">
-    <link rel="stylesheet" href="../blog/css/mediaelementplayer.css">
-    <link rel="stylesheet" href="../blog/css/mejs-controls.svg">
-    <!-- Style Sheet -->
-    <link rel="stylesheet" href="../blog/css/style.css">
+{% extends "blog/base/base.html" %}
+{% load static %}
 
-</head>
-
-<body data-spy=" " data-target=".navbar" data-offset="150">
-
+{% block content %}
 <!--  PRELOADER  -->
 <div class="loader-area">
     <div class='loader'>
@@ -474,20 +445,4 @@
 
 </div>
 
-<!-- JavaScript -->
-<script src="../vendor/js/bundle.min.js"></script>
-
-<!-- Plugin Js -->
-<script src="../vendor/js/jquery.fancybox.min.js"></script>
-<script src="../vendor/js/owl.carousel.min.js"></script>
-<script src="../vendor/js/jquery.cubeportfolio.min.js"></script>
-<!-- REVOLUTION JS FILES -->
-<script src="../vendor/js/jquery.themepunch.tools.min.js"></script>
-<script src="../vendor/js/jquery.themepunch.revolution.min.js"></script>
-
-<!-- custom script -->
-<script src="../blog/js/mediaelement-and-player.min.js"></script>
-<script src="../blog/js/wow.min.js"></script>
-<script src="../blog/js/script.js"></script>
-</body>
-</html>
+{% endblock content %}

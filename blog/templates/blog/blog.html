@@ -1,36 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="author" content="Themes Industry">
-    <!-- description -->
-    <meta name="description" content="Product is a highly creative, modern, visually stunning and Bootstrap responsive multipurpose agency and HTML5 template with 14 ready home page demos.">
-    <!-- keywords -->
-    <meta name="keywords" content="creative, modern, clean, bootstrap responsive, html5, css3, portfolio, blog, agency, templates, multipurpose, one page, corporate, start-up, studio, branding, designer, freelancer, carousel, parallax, photography, personal, masonry, grid, faq">
-    <!-- Page Title -->
-    <title>Blog | MegaOne | Creative HTML5 Template</title>
-    <link rel="stylesheet" href="../vendor/css/jquery.fancybox.min.css">
-    <!-- Favicon -->
-    <link rel="icon" href="../blog/img/favicon.ico">
-    <!-- Bundle -->
-    <link rel="stylesheet" href="../vendor/css/bundle.min.css">
-    <!-- Plugin Css -->
-    <link rel="stylesheet" href="../vendor/css/jquery.fancybox.min.css">
-    <link rel="stylesheet" href="../vendor/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="../vendor/css/cubeportfolio.min.css">
-    <link rel="stylesheet" href="../blog/css/animate.min.css">
-    <link rel="stylesheet" href="../blog/css/line-awesome.min.css">
-    <link rel="stylesheet" href="../blog/css/mediaelementplayer.css">
-    <link rel="stylesheet" href="../blog/css/mejs-controls.svg">
-    <!-- Style Sheet -->
-    <link rel="stylesheet" href="../blog/css/style.css">
+{% extends "blog/base/base.html" %}
+{% load static %}
 
-</head>
-
-<body data-spy=" " data-target=".navbar" data-offset="150">
-
+{% block content %}
 <!--  PRELOADER  -->
 <div class="loader-area">
     <div class='loader'>
@@ -40,7 +11,7 @@
     </div>
 </div>
 
-<!--<a class="scroll-top-arrow" href="javascript:void(0);"><i class="fa fa-angle-up"></i></a>-->
+<a class="scroll-top-arrow" href="javascript:void(0);"><i class="fa fa-angle-up"></i></a>
 
 <!-- START NAVBAR SECTION -->
 <header>
@@ -111,7 +82,7 @@
 
     <!--HEADER IMAGE-->
     <section id="bg-blog-detail-img" class="bg-blog-detail-img">
-        <div class="overlay"></div>
+        <div class="overlay" style="background-image: url('{{ post.image.url }}');"></div>
     </section>
 
     <section id="search">
@@ -120,7 +91,8 @@
 
                 <div class="col-sm-12 col-ms-8 col-lg-8">
                     <div class="text_minimal pt-0">
-                        <p class="sub-heading text-grey">Nam ut rutrum ex, venenatis sollicitudin urna. Aliquam erat volutpat. Integer eu ipsum sem.
+                        <h1 class="pt-3 font-weight-bold blog_detail-heading text-black">{{ post.post_title }}</h1>
+                        <!-- <p class="sub-heading text-grey">Nam ut rutrum ex, venenatis sollicitudin urna. Aliquam erat volutpat. Integer eu ipsum sem.
                             Ut lacus vestibulum maximus suscipit. Quisque vitae nibh iaculis</p>
                         <p class="sub-heading pt-2 text-grey">Nam ut rutrum ex, venenatis sollicitudin urna. Aliquam erat volutpat. Integer eu ipsum sem.
                             Ut lacus vestibulum maximus suscipit. Quisque vitae nibh iaculis. Nam ut rutrum ex, venenatis sollicitudin urna. Aliquam erat volutpat. Integer eu ipsum sem.
@@ -136,9 +108,10 @@
                             <li>Nam ut rutrum ex.</li>
                             <li class="mt-1">Aliquam erat volutpat.</li>
                             <li class="mt-1">Quisque vitae nibh iaculis.</li>
-                        </ul>
+                        </ul> -->
+                        <p class="sub-heading pt-2 text-grey">{{ post.post_text }}</p>
                     </div>
-                    <div class="row mt-40 pl-3 pr-3 pt-3">
+                    <!-- <div class="row mt-40 pl-3 pr-3 pt-3">
                         <video id="player1" poster="img/vedio-poster.jpg" controls="controls" style="max-width: 100%;" playsinline>
                             <source type="video/mp4" src="img/video.mp4">
                         </video>
@@ -169,34 +142,38 @@
                         Ut lacus vestibulum maximus suscipit. Quisque vitae nibh iaculis</p>
                     <p class="sub-heading pt-2">Nam ut rutrum ex, venenatis sollicitudin urna. Aliquam erat volutpat. Integer eu ipsum sem.
                         Ut lacus vestibulum maximus suscipit. Quisque vitae nibh iaculis. Nam ut rutrum ex, venenatis sollicitudin urna. Aliquam erat volutpat. Integer eu ipsum sem.
-                        Ut bibendum suscipit.</p>
+                        Ut bibendum suscipit.</p> -->
                     <div class="horizontal-line mt-5"></div>
 
                     <div class="written">
                         <div class="written_outerbox mt-5 display">
-                            <img class="written_img" src="img/comment_img.png" alt="">
+                            <img class="written_img" src="{{ post.author.profile.image.url }}" alt="">
                             <div class="written_text">
                                 <p class="date text-black">WRITTEN BY</p>
-                                <h1 class="main_written text-black">Enna Janes</h1>
-                                <p class="sub-heading mt-0">Nam ut rutrum ex, venenatis sollicitudin urna. Aliquam erat volutpat. Integer eu ipsum sem.
-                                    Ut lacus vestibulum maximus suscipit.</p>
+                                <h1 class="main_written text-black">{{ post.author.username }}</h1>
+                                <p class="sub-heading mt-0">Profile desc</p>
                             </div>
                         </div>
                     </div>
 
+                    
                     <div class="comment">
+                        {% for comment in comments %}
+                        <!-- ######################################################### -->
                         <div class="comment_write">
                             <div class="icon_comment">
-                                <i class="far fa-user user_icon"></i>
+                                <!-- <i class="far fa-user user_icon"></i> -->
+                                <img src="{{ comment.author.profile.image.url }}" width="100px" alt="profile pic" />
 
                                 <div class="icon_text">
-                                    <h1 class="main_written font">Mark Edison</h1>
-                                    <p class="date margin_days text-black">20 days ago</p>
+                                    <h1 class="main_written font">{{ comment.author.username }}</h1>
+                                    <p class="date margin_days text-black">{{ comment.comment_timestamp }}</p>
                                 </div>
                             </div>
-                            <p class="sub-heading mt-1">Nam ut rutrum ex, venenatis sollicitudin urna. Aliquam erat volutpat. Integer eu ipsum sem.
-                                Ut lacus vestibulum maximus suscipit.</p>
+                            <p class="sub-heading mt-1">{{ comment.comment_text }}</p>
                         </div>
+                        <!-- ######################################################### -->
+                        {% endfor %}
 
                         <h1 class="comment_text text-black mt-6 mb-5">Write a comment</h1>
                         <form>
@@ -227,43 +204,14 @@
                 </div>
 
                 <div class="col-12 col-lg-4 order-2 order-md-1 margin_small">
-                    <div class="search_outerbox">
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Search for...">
-                            <span class="input-group-btn">
-                                <button class="btn btn-search" type="button"><i class="fa fa-search fa-fw"></i></button>
-                        </span>
-                        </div>
-                    </div>
-
-                    <section id="topics">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-12 pr-0 pl-0">
-                                    <div class="topic_outerbox mt-4">
-                                        <h2>Topics</h2>
-                                        <div class="inner-box">
-                                            <ul class="sub-heading">
-                                                <li><a href="#">Doctors</a> <span class="dots">...............</span> 4</li>
-                                                <li><a href="#">Patients</a> <span class="dots pr-1">...............</span>5</li>
-                                                <li><a href="#">Corona</a><span class="dots pr-1">................</span>1</li>
-                                                <li><a href="#">Spread</a><span class="dots">................</span>  8</li>
-                                                <li><a href="#">Travel</a><span class="dots">.................</span>6</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
 
                     <section id="popular_post">
                         <div class="container">
                             <div class="row">
                                 <div class="col-12 p-0">
                                     <div class="outer_popular mt-4">
-                                        <h2 class="text-black">Popular Post</h2>
-                                        <div class="outer mt-4 display">
+                                        <h2 class="text-black">Latest Posts</h2>
+                                        <!-- <div class="outer mt-4 display">
                                             <div class="popular_image">
                                                 <a href="blogs.html"><img src="img/post1.jpg" alt="popular image"></a>
                                             </div>
@@ -271,27 +219,19 @@
                                                 <p class="main"> Minimal Post...</p>
                                                 <p class="date">March 03, 2020 by</p><span>Mark Edison</span>
                                             </div>
-                                        </div>
+                                        </div> -->
 
+                                        {% for p in latest_posts %}
                                         <div class="outer pt-lg-3 display">
                                             <div class="popular_image">
-                                                <a href="blogs.html"><img src="img/post2.jpg" alt="audio image"></a>
+                                                <a href="{% url 'blog_page' p.id %}"><img src="{{ p.image.url }}" alt="post image"></a>
                                             </div>
                                             <div class="text_post">
-                                                <p class="main"> Standard Post....</p>
-                                                <p class="date">March 12, 2020 by</p><span>Mark Edison</span>
+                                                <p class="main"> {{ p.post_title }}....</p>
+                                                <p class="date">{{ p.post_timestamp }} by</p><span>{{ p.author }}</span>
                                             </div>
                                         </div>
-
-                                        <div class="outer pt-lg-3 display">
-                                            <div class="popular_image">
-                                                <a href="blogs.html"><img src="img/post3.jpg" alt="standard image"></a>
-                                            </div>
-                                            <div class="text_post">
-                                                <p class="main">Standard Post...</p>
-                                                <p class="date">March 18, 2020 by</p><span>Mark Edison</span>
-                                            </div>
-                                        </div>
+                                        {% endfor %}
                                     </div>
                                 </div>
                             </div>
@@ -306,15 +246,9 @@
                                         <h2 class="main_tag">Tags</h2>
                                         <div class="inner_tag">
                                             <div class="tag_text">
-                                                <span><a href="">DOCTORS</a></span>
-                                                <span><a href="">PATIENTS</a></span>
-                                                <span><a href="">SPREAD</a></span>
-                                                <span><a href="">TRAVEL</a></span>
-                                                <span><a href="">CORONA</a></span>
-                                                <span><a href="">PRECAUTIONS</a></span>
-                                                <span><a href="">VACCINE</a></span>
-                                                <span><a href="">BLOG</a></span>
-
+                                                {% for tag in tags %}
+                                                <span><a href="#">{{ tag.tag_name }}</a></span>
+                                                {% endfor %}
                                             </div>
                                         </div>
                                     </div>
@@ -323,29 +257,7 @@
                         </div>
                     </section>
 
-                    <section id="archieve">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-12 pr-0 pl-0">
-                                    <div class="topic_outerbox mt-4">
-                                        <h2>Archives</h2>
-                                        <div class="inner-box1">
-                                            <ul class="sub-heading">
-                                                <li><a href="#">May 2016</a> <span class="dots">..............</span>1</li>
-                                                <li><a href="#">July 2015</a> <span class="dots">..............</span>3</li>
-                                                <li><a href="#">Dec 2017</a> <span class="dots">..............</span>1</li>
-                                                <li><a href="#">Oct 2019</a> <span class="dots">..............</span>6</li>
-                                                <li><a href="#">Sep 2018</a> <span class="dots">..............</span>8</li>
-                                                <li><a href="#">Feb 2020</a> <span class="dots">..............</span>1</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-
-                    <div class="sale_image">
+                    <!-- <div class="sale_image">
                         <div class="container">
                             <div class="row">
                                 <div class="col-12 pr-0 pl-0 pt-4">
@@ -353,47 +265,12 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
+
                 </div>
             </div>
         </div>
     </section>
 
-    <!--  START FOOTER SECTION  -->
-    <section id="footer" class="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 text-center">
-                    <ul class="footer_ul">
-                        <li class="footer_list"><i class="lab la-facebook-f"></i></li>
-                        <li class="footer_list"><i class="lab la-twitter"></i></li>
-                        <li class="footer_list"><i class="lab la-google-plus"></i></li>
-                        <li class="footer_list"><i class="lab la-linkedin-in"></i></li>
-                        <li class="footer_list"><i class="lab la-instagram"></i></li>
-                        <li class="footer_list"><i class="las la-envelope"></i></li>
-                    </ul>
-                    <p class="info footer_text"><i class="far fa-copyright"></i>2020 MegaOne. Made with love by themesindustry</p>
-                </div>
-            </div>
-        </div>
-    </section>
 
-</div>
-
-<!-- JavaScript -->
-<script src="../vendor/js/bundle.min.js"></script>
-
-<!-- Plugin Js -->
-<script src="../vendor/js/jquery.fancybox.min.js"></script>
-<script src="../vendor/js/owl.carousel.min.js"></script>
-<script src="../vendor/js/jquery.cubeportfolio.min.js"></script>
-<!-- REVOLUTION JS FILES -->
-<script src="../vendor/js/jquery.themepunch.tools.min.js"></script>
-<script src="../vendor/js/jquery.themepunch.revolution.min.js"></script>
-
-<!-- custom script -->
-<script src="../blog/js/mediaelement-and-player.min.js"></script>
-<script src="../blog/js/wow.min.js"></script>
-<script src="../blog/js/script.js"></script>
-</body>
-</html>
+{% endblock content %}

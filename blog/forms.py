@@ -1,5 +1,5 @@
 from django.forms import ModelForm, Form
-from .models import Post, Reply
+from .models import Post, Comment
 from users.models import Profile
 
 
@@ -10,9 +10,9 @@ class PostForm(ModelForm):
         exclude = ['author']
 
 
-class ReplyForm(ModelForm):
+class CommentForm(ModelForm):
     class Meta:
-        model = Reply
+        model = Comment
         fields = ['reply_text']
         exclude = ['author', 'parent_post']
 

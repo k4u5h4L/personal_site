@@ -14,8 +14,9 @@ class Tag(models.Model):
 
 class Post(models.Model):
     author = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
-    post_title = models.CharField(max_length=100)
-    post_text = models.CharField(max_length=500)
+    image = models.ImageField(default='default_profile_pic.png', upload_to='blog_covers')
+    post_title = models.CharField(max_length=200)
+    post_text = models.CharField(max_length=5000)
     post_timestamp = models.DateTimeField(default=timezone.now)
 
     tags = models.ManyToManyField(Tag)
@@ -27,8 +28,8 @@ class Post(models.Model):
 class Comment(models.Model):
     author = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     parent_post = models.ForeignKey(Post, on_delete=models.CASCADE)
-    reply_text = models.CharField(max_length=500)
-    reply_timestamp = models.DateTimeField(default=timezone.now)
+    comment_text = models.CharField(max_length=500)
+    comment_timestamp = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
-        return self.reply_text
+        return self.comment_text

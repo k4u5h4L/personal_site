@@ -637,7 +637,7 @@ li.footer_list:hover{
 
 /*******************DETAIL BLOGS PAGE START****************/
 .bg-blog-detail-img{
-    background-image: url("../img/top-stories-header.jpg");
+    /* background-image: url("../img/top-stories-header.jpg"); */
     height: 350px;
     background-attachment: fixed;
     background-position: center;
