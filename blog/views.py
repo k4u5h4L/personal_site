@@ -106,7 +106,7 @@ def blog_search_page(request):
 
     posts = postFilter.qs
 
-    paginate = Paginator(posts, 2)
+    paginate = Paginator(posts, 5)
 
     page_num = request.GET.get('page', 1)
 
@@ -124,3 +124,16 @@ def blog_search_page(request):
     }
     # do some searching using query string, and send that to the template
     return render(request, 'blog/search.html', context)
+
+
+def not_found_page(request, exception):
+    context = {
+        'message': "Page you are looking for does not exists or has been removed."
+    }
+    return render(request, 'blog/404.html', context)
+
+def not_found_page_server(request):
+    context = {
+        'message': "There seems to be an issue on our side. We will be back shortly!"
+    }
+    return render(request, 'blog/404.html', context)

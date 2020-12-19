@@ -109,7 +109,8 @@
                             <li class="mt-1">Aliquam erat volutpat.</li>
                             <li class="mt-1">Quisque vitae nibh iaculis.</li>
                         </ul> -->
-                        <p class="sub-heading pt-2 text-grey">{{ post.post_text }}</p>
+                        <!-- <p class="sub-heading pt-2 text-grey conte">{{ post.post_text }}</p> -->
+                        <div id="content"></div>
                     </div>
                     <!-- <div class="row mt-40 pl-3 pr-3 pt-3">
                         <video id="player1" poster="img/vedio-poster.jpg" controls="controls" style="max-width: 100%;" playsinline>
@@ -281,3 +282,13 @@
 
 
 {% endblock content %}
+
+{% block extra_js %}
+
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script>
+    document.getElementById('content').innerHTML =
+      marked('{{ post.post_text }}');
+  </script>
+
+{%  endblock extra_js %}

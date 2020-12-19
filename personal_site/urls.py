@@ -35,5 +35,5 @@ if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL,
                           document_root=settings.MEDIA_ROOT)
 
-# handler404 = 'forum.views.not_found_page'
-# handler500 = 'forum.views.not_found_page_server'
+handler404 = 'blog.views.not_found_page'
+handler500 = 'blog.views.not_found_page_server'
